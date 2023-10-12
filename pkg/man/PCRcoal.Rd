@@ -114,29 +114,6 @@ PCRcoal is a class implementing the coalescent approach to PCR simulation develo
         # Print size trajectories:
         print(res$trajectories)
 
-	##
-	## Simulating mutations using PhyloSim
-	##
-
-	# Sample tree:
-	tree <- sample.tree(sim)
-
-	# Load the phylosim package
-	library(phylosim)
-	# Construct a PhyloSim object, set up the root
-	# sequence and the substitution process:	
-	psim <- PhyloSim(
-		phylo = tree,
-		root.seq=sampleStates( NucleotideSequence(length=10,processes=list(list(JC69())) ) )
-	)
-	# Scale the tree:	
-	scaleTree(psim,0.1)
-
-	# Simulate mutations:
-	Simulate(psim)
-
-	# Plot the resulting alignment:
-	plot(psim,plot.ancestors=FALSE)
 }
 
 \keyword{classes, coalescent, PCR, simulation}
