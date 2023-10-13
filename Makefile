@@ -1,5 +1,8 @@
 
-.PHONY: inst remove
+.PHONY: inst remove check pkg
+
+pkg:
+	R CMD BUILD .
 
 inst:
 	R CMD INSTALL .
