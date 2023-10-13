@@ -59,7 +59,7 @@ PCRcoal is a class implementing the coalescent approach to PCR simulation develo
 }
 
 \seealso{
-  The \code{\link{ape}} and \code{\link{phylosim}} packages.}
+  The \code{\link{ape}} package.}
 \author{Botond Sipos}
 \examples{
 	# Construct a PCRcoal object 
