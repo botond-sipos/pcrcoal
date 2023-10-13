@@ -14,13 +14,69 @@ References
 
 Weiss, G, von Haeseler, A (1997) A coalescent approach to the polymerase chain reaction. NAR 25(15): 3082-3087 [http://dx.doi.org/10.1093/nar/25.15.3082](http://dx.doi.org/10.1093/nar/25.15.3082)
 
-Download an install
--------------------
+Installation
+------------
+The most practical way to install the package is using the `devtools` package:
 
-The released packages are available from [CRAN](http://cran.r-project.org/web/packages/pcrcoal).
+```bash
+library(devtools)
+install_github("botond-sipos/pcrcoal")
+```
 
-Building from source
---------------------
+Example usage
+-------------
 
-The package can be built from the source by issuing <tt>make pkg</tt> on a <tt>*nix</tt> system. The building process needs the standard unix tools and <tt>R</tt>.
+```R
+library(pcrcoal)
+# Construct a PCRcoal object
+# and specify the experimental conditions:
+sim <-PCRcoal(
+initial.size    =5,
+sample.size     =10,
+nr.cycles       =20,
+efficiencies    =c(rep(0.1, 30))
+)
 
+##
+## Method: sample.tree
+##
+
+ # Sample a coalescent tree:
+tree <- sample.tree(sim)
+
+# Print tree info:
+print(tree)
+
+# Plot the tree:
+plot(tree)
+
+##
+## Method: sample.tnt
+##
+
+# Sample a coalescent tree with subsample sizes and
+# size trajectories:
+res <- sample.tnt(sim)
+
+# Print subsample sizes:
+print(res$subsamples)
+
+# Print size trajectories:
+print(res$trajectories)
+
+# Print tree info:
+print(res$phylo)
+
+##
+## Method: sample.trs
+##
+
+# Sample subsample sizes and size trajectories:
+res <- sample.trs(sim)
+
+# Print subsample sizes:
+print(res$subsamples)
+
+# Print size trajectories:
+print(res$trajectories)
+```
